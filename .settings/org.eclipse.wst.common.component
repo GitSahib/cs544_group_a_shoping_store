@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="shopping-store-group-a">
+    <wb-module deploy-name="webstore-group-a-1.3.5.RELEASE">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <property name="context-root" value="shopping-store-group-a"/>
-        <property name="java-output-path" value="/shopping-store-group-a/target/classes"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+        <property name="java-output-path" value="/webstore-group-a/target/classes"/>
+        <property name="context-root" value="webstore-group-a"/>
     </wb-module>
 </project-modules>
