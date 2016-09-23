@@ -1,9 +1,0 @@
-{
-  "groups": [{
-    "name": "",
-    "type": "mum.edu.webstore.config.WebSecurityConfig",
-    "sourceType": "mum.edu.webstore.config.WebSecurityConfig"
-  }],
-  "properties": [],
-  "hints": []
-}
