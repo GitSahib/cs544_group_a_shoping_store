@@ -7,6 +7,7 @@ import java.util.Set;
 @Table(name = "role")
 public class Role extends Model {
     private String name;
+    @ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
     private Set<User> users;
     public String getName() {
         return name;

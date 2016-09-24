@@ -1,20 +1,18 @@
 package mum.edu.webstore.model;
 
 import java.sql.Timestamp;
-import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
+@Table(name = "order_line")
 public class Order extends Model {
 	@ManyToOne
 	private Customer customer;
@@ -22,16 +20,10 @@ public class Order extends Model {
 	private Address shippingAddress;
 	@Enumerated(EnumType.STRING)
 	private PaymentType paymentType;
-	private Timestamp date;
+	private Timestamp orderDate;
 	private double total;
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="order_detail",
-         joinColumns=
-         @JoinColumn(name="order_id", referencedColumnName="order_id"),
-         inverseJoinColumns=
-         @JoinColumn(name="product_id", referencedColumnName="product_id")
-    )
-    private List<Product> productList;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private Set<OrderItem> orderItems;
 	 
 	public Customer getCustomer() {
 		return customer;
@@ -52,11 +44,11 @@ public class Order extends Model {
 		this.paymentType = paymentType;
 	}
 	
-	public Timestamp getDate() {
-		return date;
+	public Timestamp getOrderDate() {
+		return orderDate;
 	}
-	public void setDate(Timestamp date) {
-		this.date = date;
+	public void setOrderDate(Timestamp date) {
+		this.orderDate = date;
 	}
 	public double getTotal() {
 		return total;

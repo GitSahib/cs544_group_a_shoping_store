@@ -10,11 +10,17 @@ public class User extends Model {
     private String username;
     private String password;
     private String passwordConfirm;
+    @ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="user_role",
+         joinColumns=
+         @JoinColumn(name="user_id"),
+         inverseJoinColumns=
+         @JoinColumn(name="role_id")
+    )
     private Set<Role> roles;
+    @OneToOne
     private Customer customer;
-   
-   
-
+    
     public String getUsername() {
         return username;
     }
@@ -49,4 +55,12 @@ public class User extends Model {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 }

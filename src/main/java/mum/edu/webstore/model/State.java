@@ -3,6 +3,7 @@ package mum.edu.webstore.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -11,7 +12,16 @@ import javax.persistence.Table;
 public class State extends ModelAddress{
 	
 	private String name;
-	
+	@ManyToOne
+	private Country country;
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
 	@OneToMany(mappedBy="state")
 	private List<City> cities;
 	public String getName() {

@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,14 +19,18 @@ public class Customer extends Model {
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="address_customers",
          joinColumns=
-         @JoinColumn(name="customer_id", referencedColumnName="customer_id"),
+         @JoinColumn(name="customer_id",referencedColumnName="id"),
          inverseJoinColumns=
-         @JoinColumn(name="address_id", referencedColumnName="address_id")
+         @JoinColumn(name="address_id",referencedColumnName="id")
     )
 	private List<Address> addressList;
 	@OneToMany(mappedBy="customer")
 	private List<Card> cardList;
 	private String email;
+	@OneToMany(mappedBy="customer")
+	private List<Order> orderList;
+	@OneToOne (mappedBy="customer")
+	User user;
 	
 	public String getLastName() {
 		return lastName;
