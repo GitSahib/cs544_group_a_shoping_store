@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Transient;
 @Entity
 @Table(name="product")
 public class Product extends Model{
@@ -20,11 +22,24 @@ public class Product extends Model{
 	private String description;
 	private String imageUrl;
 	private double price;
+	
+	@Transient
+	private int stockNumber;
+	
+
 	@OneToOne(optional=false,cascade=CascadeType.ALL, 
 		       mappedBy="product",targetEntity=Stock.class)
 	private Stock stock;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private Set<OrderItem> orderItems;
+	
+	
+	public int getStockNumber() {
+		return stockNumber;
+	}
+	public void setStockNumber(int stockNumber) {
+		this.stockNumber = stockNumber;
+	}
 	public Category getCategory() {
 		return category;
 	}

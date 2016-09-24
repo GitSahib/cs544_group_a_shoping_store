@@ -1,5 +1,9 @@
 package mum.edu.webstore.controllers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -14,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mum.edu.webstore.model.Category;
 import mum.edu.webstore.model.Product;
+import mum.edu.webstore.model.Stock;
+import mum.edu.webstore.service.CategoryService;
 import mum.edu.webstore.service.ProductService;
 
 @Controller
@@ -23,6 +30,8 @@ public class ProductController {
 	private Logger log = Logger.getLogger(ProductController.class);
     @Autowired
 	ProductService productService;
+    @Autowired
+	CategoryService categoryService;
     @RequestMapping("/")
     public String redirectRoot() {
         return "redirect:/products";
@@ -44,8 +53,14 @@ public class ProductController {
         if (result.hasErrors()) {
             return "admin/addProduct";
         } else {
+        	
+        	Stock stock = new Stock();
+        	stock.setProduct(product);
+        	stock.setQuantity(product.getStockNumber());
+        	product.setStock(stock);
+        	
             productService.add(product);
-            return "redirect:/products";
+            return "redirect:/admin/products";
         }
     }
 
@@ -77,5 +92,10 @@ public class ProductController {
         mv.getModel().put("e", e);
         mv.setViewName("noSuchResource");
         return mv;
+    }
+    
+    @ModelAttribute("productCategories")
+    public Collection<Category> productCategories() {
+		return categoryService.getAll();
     }
 }

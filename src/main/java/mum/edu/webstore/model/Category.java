@@ -14,6 +14,8 @@ public class Category extends Model{
 	private String imageUrl;
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
+	
+	
 	public List<Product> getProducts() {
 		return products;
 	}
