@@ -2,10 +2,15 @@ package mum.edu.webstore.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name="product")
 public class Product extends Model{
 	@ManyToOne
 	private Category category;
@@ -13,6 +18,9 @@ public class Product extends Model{
 	private String description;
 	private String imageUrl;
 	private double price;
+	@OneToOne(optional=false,cascade=CascadeType.ALL, 
+		       mappedBy="product",targetEntity=Stock.class)
+	private Stock stock;
 	@ManyToMany(mappedBy="productList",fetch=FetchType.EAGER)
 	private List<Order> orderList;
 	public Category getCategory() {
@@ -44,5 +52,11 @@ public class Product extends Model{
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public Stock getStock() {
+		return stock;
+	}
+	public void setStock(Stock stock) {
+		this.stock = stock;
 	}
 }
