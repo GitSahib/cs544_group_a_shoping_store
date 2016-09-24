@@ -5,22 +5,15 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class User {
-    private Long id;
+public class User extends Model {
+	
     private String username;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Customer customer;
+   
+   
 
     public String getUsername() {
         return username;

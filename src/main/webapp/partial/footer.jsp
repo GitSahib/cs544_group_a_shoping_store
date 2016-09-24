@@ -40,7 +40,7 @@
 							</script>
 							<div class="like_box">
 								<div class="fb-like-box"
-									data-href="http://www.facebook.com/w3layouts"
+									data-href="http://www.facebook.com/solvepapers"
 									data-colorscheme="light" data-show-faces="true"
 									data-header="true" data-stream="false" data-show-border="true"></div>
 							</div>
