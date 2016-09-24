@@ -1,8 +1,8 @@
-# Online Web Store By Group A CS544 with Spring Security, Spring Boot, Spring Data JPA, HSQL, JSP
+# Registration and Login Example with Spring Security, Spring Boot, Spring Data JPA, HSQL, JSP
 
 ## Guide
-GROUP A CS544
-Web Store
+https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
+
 ## Prerequisites
 - JDK 1.7 or later
 - Maven 3 or later
