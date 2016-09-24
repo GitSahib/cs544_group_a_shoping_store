@@ -7,6 +7,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,8 @@ public class Customer extends Model {
          @JoinColumn(name="address_id", referencedColumnName="address_id")
     )
 	private List<Address> addressList;
+	@OneToMany(mappedBy="customer")
+	private List<Card> cardList;
 	private String email;
 	
 	public String getLastName() {
@@ -47,5 +50,11 @@ public class Customer extends Model {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public List<Card> getCardList() {
+		return cardList;
+	}
+	public void setCardList(List<Card> cardList) {
+		this.cardList = cardList;
 	}
 }
