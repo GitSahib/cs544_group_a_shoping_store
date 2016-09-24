@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -30,17 +32,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
+        .antMatchers("/admin**").hasAuthority("Admin")
+        .antMatchers("/admin/**").hasAuthority("Admin")
 		.antMatchers("/checkout**").authenticated()
 		.and()
 		    .formLogin().loginPage("/login").failureUrl("/login?error")
 		    .usernameParameter("username").passwordParameter("password")
 		.and()
-		    .logout().logoutSuccessUrl("/login?logout")
-		.and()
-		    .csrf();
+		    .logout().logoutSuccessUrl("/login?logout");
        
     }
-
+    private CsrfTokenRepository csrfTokenRepository() 
+    { 
+        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository(); 
+        repository.setSessionAttributeName("_csrf");
+        return repository; 
+    }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());

@@ -1031,7 +1031,7 @@ table {
 .register_account table td {
 	width: 100%;
 }
-.register_account form input[type="text"], .register_account form select {
+.register_account form input, .register_account form select {
 	font-size:0.95em;
 	color:#777;
 	padding: 8px;
@@ -1045,7 +1045,7 @@ table {
 	-moz-box-shadow:0 0 2px #aaa;
 	-o-box-shadow:0 0 2px #aaa;
 }
-.register_account form input[type="text"]:hover, .register_account form select:hover {
+.register_account form input:hover, .register_account form select:hover {
 	box-shadow:0 0 4px #aaa;
 	-webkit-box-shadow:0 0 4px #aaa;
 	-moz-box-shadow:0 0 4px #aaa;

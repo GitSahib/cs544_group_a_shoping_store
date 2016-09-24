@@ -18,6 +18,7 @@ import mum.edu.webstore.model.Product;
 import mum.edu.webstore.service.ProductService;
 
 @Controller
+@RequestMapping("/admin")
 public class ProductController {
 	private Logger log = Logger.getLogger(ProductController.class);
     @Autowired

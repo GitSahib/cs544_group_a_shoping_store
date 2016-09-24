@@ -10,12 +10,46 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "customer")
 public class Customer extends Model {
 	private String firstName;
 	private String lastName;
+	private String phoneNumber;
+	@Transient
+	private String password;
+	@Transient 
+	private String street;
+	@Transient
+	private String state;
+	@Transient 
+	private String city;
+	public String getStreet() {
+		return street;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="address_customers",
          joinColumns=
@@ -32,6 +66,18 @@ public class Customer extends Model {
 	@OneToOne (mappedBy="customer")
 	User user;
 	
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public String getLastName() {
 		return lastName;
 	}
@@ -61,5 +107,11 @@ public class Customer extends Model {
 	}
 	public void setCardList(List<Card> cardList) {
 		this.cardList = cardList;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 }
