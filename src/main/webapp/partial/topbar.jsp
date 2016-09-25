@@ -21,8 +21,8 @@
 		<div class="cssmenu">
 			<ul>
 				<li class="active"><a href="login">Account</a></li> |
-				<li><a href="checkout">Wishlist</a></li> |
-				<li><a href="checkout">Checkout</a></li> |
+				<li><a href="/checkout">Wishlist</a></li> |
+				<li><a href="/checkout">Checkout</a></li> |
 				<li><a href="login">Log In</a></li> |
 				<li><a href="registration">Sign Up</a></li>
 			</ul>
