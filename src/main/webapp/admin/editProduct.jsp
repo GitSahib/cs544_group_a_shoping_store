@@ -10,9 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Add Product</h1>
+	<h1>Edit Product</h1>
 	
-	<form:form action="/admin/products" method="POST" modelAttribute="product">
+	<form:form action="/admin/products/${product.id}" method="POST" modelAttribute="product">
+		ID: <form:input path="id" placeholder="ID" disabled="true"/> <br/>
 		Name: <form:input path="name" placeholder="Name"/> <br/>
 		Category: <form:select path="category">
 			<form:options items="${productCategories}" itemValue="id" itemLabel="name"/>

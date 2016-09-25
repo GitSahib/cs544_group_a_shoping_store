@@ -14,21 +14,31 @@
 <body>
 	
 	
-	Product List
+	<h1>Product List</h1>
 	<div>
 		<table border="1">
 			<tr>
 					<th>ID</th>
 					<th>Name</th>
+					<th>Category</th>
 					<th>Price</th>
 					<th>Stock</th>
+					<th>Edit</th>
+					<th>Delete</th>
 			</tr>
 			<c:forEach var="product" items="${products}">
 				<tr>
 					<td>${product.id}</td>
 					<td>${product.name}</td>
+					<td>${product.category.name}</td>
 					<td>${product.price}</td>
 					<td>${product.stock.quantity}</td>
+					<td><a href="/admin/products/${product.id}">Edit</a></td>
+					<td>
+						<form:form action="/admin/products/${product.id}" method="delete">
+							<input type="submit" value="Delete"/>
+						</form:form>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

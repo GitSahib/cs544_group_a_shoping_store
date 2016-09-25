@@ -1,8 +1,6 @@
 package mum.edu.webstore.controllers;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.validation.Valid;
 
@@ -67,24 +65,25 @@ public class ProductController {
     @RequestMapping(value = "/products/{id}", method = RequestMethod.GET)
     public String get(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.get(id));
-        return "admin/productDetail";
+        return "admin/editProduct";
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.POST)
     public String update(@Valid Product product, BindingResult result, @PathVariable int id) {
         if (result.hasErrors()) {
-            return "admin/productDetail";
+            return "admin/editProduct";
         } else {
             productService.update(id, product); // product.id already set by binding
-            return "redirect:/products";
+            return "redirect:/admin/products";
         }
     }
-
-    @RequestMapping(value = "/products/delete", method = RequestMethod.POST)
-    public String delete(int productId) {
-        productService.delete(productId);
-        return "redirect:/products";
+    
+    @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable int id) {
+        productService.delete(id);
+        return "redirect:/admin/products";
     }
+    
 
     @ExceptionHandler(value = NoSuchResourceException.class)
     public ModelAndView handle(Exception e) {
