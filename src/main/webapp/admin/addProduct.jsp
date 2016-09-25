@@ -12,13 +12,14 @@
 <body>
 	<h1>Add Product</h1>
 	
-	<form:form action="/admin/products" method="POST" modelAttribute="product">
+	<form:form action="/admin/products" method="POST" modelAttribute="product" enctype="multipart/form-data">
 		Name: <form:input path="name" placeholder="Name"/> <br/>
 		Category: <form:select path="category">
 			<form:options items="${productCategories}" itemValue="id" itemLabel="name"/>
 		</form:select> <br/>
 		Description: <form:input path="description" placeholder="Description"/> <br/>
 		Price: <form:input path="price" placeholder="Price"/> <br/>
+		Picture: <input type="file" name="file">
 		
 		<br/>
 		Stock: <form:input path="stockNumber" placeholder="Stock"/> <br/>

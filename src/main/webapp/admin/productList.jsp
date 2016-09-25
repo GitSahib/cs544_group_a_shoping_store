@@ -23,6 +23,7 @@
 					<th>Category</th>
 					<th>Price</th>
 					<th>Stock</th>
+					<th>Image</th>
 					<th>Edit</th>
 					<th>Delete</th>
 			</tr>
@@ -33,6 +34,7 @@
 					<td>${product.category.name}</td>
 					<td>${product.price}</td>
 					<td>${product.stock.quantity}</td>
+					<td><c:if test="${not empty product.imageUrl}"><img src="${product.imageUrl}"/></c:if></td>
 					<td><a href="/admin/products/${product.id}">Edit</a></td>
 					<td>
 						<form:form action="/admin/products/${product.id}" method="delete">

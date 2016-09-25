@@ -7,7 +7,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="stock")
 public class Stock extends Model {
-	@OneToOne(optional=false)
+	@OneToOne(optional=true)
     @JoinColumn(name = "product_id") 
     private Product product; 
 	int quantity;
