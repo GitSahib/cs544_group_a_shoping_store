@@ -48,8 +48,6 @@ public class ProductController {
 	ProductService productService;
     @Autowired
 	CategoryService categoryService;
-    @Autowired
-	StockService stockService;
     
     @RequestMapping("/")
     public String redirectRoot() {
