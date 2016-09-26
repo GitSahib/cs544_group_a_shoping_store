@@ -65,6 +65,7 @@ public class UserController {
         	log.info(user);
             return "register";
         }
+        user.setCustomer(userForm);
         userService.save(user);
         userForm.setUser(user);
         customerService.save(userForm);

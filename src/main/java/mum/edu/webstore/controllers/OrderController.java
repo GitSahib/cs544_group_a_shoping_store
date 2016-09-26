@@ -99,7 +99,13 @@ public class OrderController {
     
     @RequestMapping(value = "/orderList", method = RequestMethod.GET)
     public String orderListGet(Model model, HttpSession session) {
-    	model.addAttribute("orders", orderService.getAll());
+    	
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	org.springframework.security.core.userdetails.User spuser = (org.springframework.security.core.userdetails.User) auth.getPrincipal();
+    	User user = userService.findByUsername(spuser.getUsername());
+    	Customer customer = user.getCustomer();
+    	
+    	model.addAttribute("orders", orderService.getAllByCustomer(customer.getId()));
     	
         return "orderList";
     }

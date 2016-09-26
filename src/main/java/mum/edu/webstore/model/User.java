@@ -18,7 +18,7 @@ public class User extends Model {
          @JoinColumn(name="role_id")
     )
     private Set<Role> roles;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Customer customer;
     
     public String getUsername() {
