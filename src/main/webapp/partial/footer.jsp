@@ -145,4 +145,6 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript"
+	src="${contextPath}/resources/js/app.js"></script>
 

@@ -12,20 +12,76 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity
+@Entity //Table Name customer
 @Table(name = "customer")
 public class Customer extends Model {
+	//region - Table properties
 	private String firstName;
 	private String lastName;
-	private String phoneNumber;
+	private String phoneNumber;	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="address_customers",
+         joinColumns=
+         @JoinColumn(name="customer_id",referencedColumnName="id"),
+         inverseJoinColumns=
+         @JoinColumn(name="address_id",referencedColumnName="id")
+    )
+	private List<Address> addressList;
+	
+	@OneToMany(mappedBy="customer")
+	private List<Card> cardList;
+	
+	private String email;
+	
+	@OneToMany(mappedBy="customer")
+	private List<Order> orderList;
+	
+	@OneToOne (mappedBy="customer")
+	User user;
+	//endregion
+	//region - Transient Customer Form fields 
 	@Transient
 	private String password;
+	@Transient
+	private String passwordConfirm;	
 	@Transient 
 	private String street;
 	@Transient
 	private String state;
 	@Transient 
 	private String city;
+	//endregion
+	//region - Getters and Setters
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	public String getStreet() {
 		return street;
 	}
@@ -44,63 +100,11 @@ public class Customer extends Model {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="address_customers",
-         joinColumns=
-         @JoinColumn(name="customer_id",referencedColumnName="id"),
-         inverseJoinColumns=
-         @JoinColumn(name="address_id",referencedColumnName="id")
-    )
-	private List<Address> addressList;
-	@OneToMany(mappedBy="customer")
-	private List<Card> cardList;
-	private String email;
-	@OneToMany(mappedBy="customer")
-	private List<Order> orderList;
-	@OneToOne (mappedBy="customer")
-	User user;
-	
-	public List<Order> getOrderList() {
-		return orderList;
-	}
-	public void setOrderList(List<Order> orderList) {
-		this.orderList = orderList;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
 	public List<Address> getAddressList() {
 		return addressList;
 	}
 	public void setAddressList(List<Address> addressList) {
 		this.addressList = addressList;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public List<Card> getCardList() {
 		return cardList;
@@ -108,10 +112,23 @@ public class Customer extends Model {
 	public void setCardList(List<Card> cardList) {
 		this.cardList = cardList;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getEmail() {
+		return email;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setEmail(String email) {
+		this.email = email;
+	}	
+	public String getPassword() {
+		return password;
 	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+	//endregion;
 }

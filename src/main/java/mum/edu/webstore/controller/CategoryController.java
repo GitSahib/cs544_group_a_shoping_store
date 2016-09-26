@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;

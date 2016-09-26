@@ -2,11 +2,11 @@
 	<div class="wrap">
 		<div class="header-top-left">
 			<div class="box">
-				<select tabindex="4" class="dropdown">
+				<select tabindex="4" id="language" class="dropdown">
 					<option value="" class="label" value="">Language :</option>
-					<option value="1">English</option>
-					<option value="2">French</option>
-					<option value="3">German</option>
+					<option value="en">English</option>
+					<option value="fr">French</option>
+					<option value="ur">Urdu</option>
 				</select>
 			</div>
 			<div class="box1">
@@ -21,7 +21,7 @@
 		<div class="cssmenu">
 			<ul>
 				<li class="active"><a href="login">Account</a></li> |
-				<li><a href="checkout">Wishlist</a></li> |
+				<li><a href="wishlist">Wishlist</a></li> |
 				<li><a href="checkout">Checkout</a></li> |
 				<li><a href="login">Log In</a></li> |
 				<li><a href="registration">Sign Up</a></li>
