@@ -30,4 +30,8 @@ public class OrderServiceImpl implements OrderService {
 		return orderRepository.findOne(id);
 	}
 
+	@Override
+	public List<Order> getAllByCustomer(long customer_id) {
+		return orderRepository.findAllByCustomerId(customer_id);
+	}
 }
