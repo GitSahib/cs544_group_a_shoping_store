@@ -13,6 +13,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import org.springframework.data.annotation.Transient;
 
@@ -25,6 +26,7 @@ public class Order extends Model {
 	//private Address shippingAddress;
 	
 	@Embedded
+	@Valid
 	SimpleAddress shippingAddress;
 	
 	@Transient

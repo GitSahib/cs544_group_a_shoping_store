@@ -20,6 +20,7 @@ import mum.edu.webstore.model.CartItem;
 import mum.edu.webstore.model.Customer;
 import mum.edu.webstore.model.Order;
 import mum.edu.webstore.model.OrderItem;
+import mum.edu.webstore.model.PaymentType;
 import mum.edu.webstore.model.User;
 import mum.edu.webstore.service.AddressService;
 import mum.edu.webstore.service.OrderService;
@@ -54,13 +55,15 @@ public class OrderController {
     	
         model.addAttribute("order", new Order());
         model.addAttribute("countries", addressService.getAllCountries());
+        model.addAttribute("paymentTypes", PaymentType.values());
         return "order";
     }
     
     @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public String orderPost(@Valid Order order, Model model, HttpSession session, BindingResult result) {
+    public String orderPost(@Valid Order order, BindingResult result, Model model, HttpSession session) {
     	
         if (result.hasErrors()) {
+        	log.error("Order validation failed");
             return "order";
         }
     	

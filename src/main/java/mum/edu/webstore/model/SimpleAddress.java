@@ -1,6 +1,7 @@
 package mum.edu.webstore.model;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Pattern;
 
 @Embeddable
 public class SimpleAddress {
@@ -39,6 +40,8 @@ public class SimpleAddress {
 	private String country;
 	private String state;
 	private String city;
+	
+	@Pattern(message="Must be digits" , regexp="[0-9]+")
 	private String zip;
 
 }

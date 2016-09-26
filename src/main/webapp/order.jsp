@@ -111,8 +111,14 @@
 				
 			<%--  			City: <form:input path="shippingAddress.city"/> <br/> --%>
 <%--  			State: <form:input path="shippingAddress.state"/> <br/> --%>
-			Zip1: <form:input path="shippingAddress.zip"/> <br/>
- 			PaymentType: <form:input path="paymentType"/> <br/>
+			Zip1: <form:input path="shippingAddress.zip"/> <form:errors path="shippingAddress.zip"></form:errors> <br/>
+			<h3>Payment</h3>
+ 			PaymentType: <form:select path="paymentType">
+ 				<form:options items="${paymentTypes}"/>
+ 			</form:select> <br/>
+<%--  			<form:input path="paymentType"/> <form:errors path="paymentType"></form:errors>  --%>
+
+<hr/>
 			<input type="submit" value="Submit" onclick="updateHiddenFields(); return true;"/>
 			
 		</form:form>

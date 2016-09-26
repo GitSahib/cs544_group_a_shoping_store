@@ -47,7 +47,14 @@
 		City: ${order.shippingAddress.city} <br/>
 		State: ${order.shippingAddress.state} <br/>
 		Country: ${order.shippingAddress.country} <br/>
+		Zip: ${order.shippingAddress.zip} <br/>
 	
+	</div>
+	
+	<h2>Payment</h2>
+	<div>
+		Payment type: ${order.paymentType} <br/>
+
 	</div>
 	
 	<br/>
