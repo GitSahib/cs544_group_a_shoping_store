@@ -24,7 +24,7 @@ public class Order extends Model {
 	private double total;
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderItem> orderItems;
-	 
+	//region -Getters and Setters 
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -55,5 +55,18 @@ public class Order extends Model {
 	}
 	public void setTotal(double total) {
 		this.total = total;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",Customer:"+this.getCustomer()+
+						",ShippingAddress:"+this.getShippingAddress()+
+						",PaymentType:"+this.getPaymentType()+
+						",OrderDate:"+this.getOrderDate()+
+						",Total:"+this.getTotal()+
+						"}";
+		return json;
 	}
 }

@@ -1,18 +1,29 @@
 $(function() {
 	$("#language").change(
 			function() {
-				window.location = "locale?lang=" + this.value + "&page="
-						+ window.location.href;
+				window.location = "locale?lang=" + this.value;
 			});
 	var lang = getCookie("lang");
 	if (lang != "") {
 		$("#language").val(lang);
-		$("#language").megamenu();
 		$("#language").
 		parent().
 		next("span.selected").
-		text($("#language").parent().next("span.selected").text() + $("#language option:selected").text());
+		text( $("#language option:selected").text());
 		console.log(lang);
+	}
+	$("#currency").change(
+			function() {
+				window.location = "currency?currency=" + this.value;
+			});
+	var currency = getCookie("currency");
+	if (currency != "") {
+		$("#currency").val(currency);
+		$("#currency").
+		parent().
+		next("span.selected").
+		text( $("#currency option:selected").text());
+		console.log(currency);
 	}
 });
 function getCookie(cname) {

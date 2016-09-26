@@ -14,6 +14,7 @@ public class State extends ModelAddress{
 	private String name;
 	@ManyToOne
 	private Country country;
+	//region -Getters and Setters
 	public Country getCountry() {
 		return country;
 	}
@@ -39,6 +40,16 @@ public class State extends ModelAddress{
 	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
-
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",Code:"+this.getCode()+
+						",Name:"+this.getName()+
+						",Country:"+this.getCountry()+
+						"}";
+		return json;
+	}
 	
 }

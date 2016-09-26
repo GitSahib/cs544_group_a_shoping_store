@@ -11,7 +11,8 @@ import javax.persistence.Table;
 public class Country extends Model{
 	private String name;
 	@OneToMany(mappedBy="country")
-	private List<State> states; 
+	private List<State> states;
+	//region Getters and Setters
 	public String getName() {
 		return name;
 	}
@@ -26,5 +27,15 @@ public class Country extends Model{
 
 	public void setStates(List<State> states) {
 		this.states = states;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Name:"+this.getName()+
+						"}";
+		return json;
 	}
 }

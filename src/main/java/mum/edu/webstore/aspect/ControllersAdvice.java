@@ -2,11 +2,10 @@ package mum.edu.webstore.aspect;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.support.ResourceBundleMessageSource;
@@ -14,25 +13,45 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import mum.edu.webstore.SpringApplicationContextHolder;
-@DependsOn("springApplicationContextHolder")
+import mum.edu.webstore.WebStoreAppCtxHolder;
+@DependsOn("webStoreAppCtxHolder")
 @Component
 @Aspect
-public class ControllersAdvice {
-	private Logger logger = Logger.getLogger(ControllersAdvice.class);
-	MessageSource messageSource = SpringApplicationContextHolder.getApplicationContext().getBean(ResourceBundleMessageSource.class);	
+public class ControllersAdvice extends Advise{
+	ControllersAdvice() {
+		super(ControllersAdvice.class);
+	}
+	MessageSource messageSource = WebStoreAppCtxHolder.getApplicationContext().getBean(ResourceBundleMessageSource.class);	
    	@Before("execution(* mum.edu.webstore.controller.*.*(..))")
-	public void controllerAction(JoinPoint joinPoint) 
+	public void controllerActionBefore(JoinPoint joinPoint) 
 	{
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+		setLanguage();
+		logRequestBefore(joinPoint);
+	}
+   	@After("execution(* mum.edu.webstore.controller.*.*(..))")
+	public void controllerActionAfer(JoinPoint joinPoint) 
+	{
+		logRequestAfter(joinPoint);
+	}
+   	private void logRequestBefore(JoinPoint jp) {
+		// TODO Auto-generated method stub
+		logger.info("A request to:"+jp.getTarget()+" Method:"+jp.getSignature() +" is about to process");
+	}
+   	private void logRequestAfter(JoinPoint jp) {
+		// TODO Auto-generated method stub
+		logger.info("A request to:"+jp.getTarget()+" Method:"+jp.getSignature() +" procesed");
+	}
+	private void setLanguage()
+   	{
+   		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
 		Cookie[] cookies= request.getCookies();
+		if(cookies == null){return;}
 		for(Cookie cookie:cookies)
 		{
-			logger.info(messageSource);
 			if (cookie.getName().equals("lang")) {
 				((ResourceBundleMessageSource)messageSource).setBasename("validation-" + cookie.getValue());
-				logger.info("Cookie Name:" + cookie.getName());
+				logger.info("Client Lang is:" + cookie.getValue());
 			}
-		}		
-	}
+		}	
+   	}
 }

@@ -1,12 +1,9 @@
 package mum.edu.webstore.model;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,6 +22,7 @@ public class Product extends Model{
 	private Stock stock;
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private Set<OrderItem> orderItems;
+	//region -Getters and Setters
 	public Category getCategory() {
 		return category;
 	}
@@ -60,5 +58,19 @@ public class Product extends Model{
 	}
 	public void setStock(Stock stock) {
 		this.stock = stock;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Name:"+this.getName()+
+						",Description:"+this.getDescription()+
+						",ImageUrl:"+this.getImageUrl()+
+						",Price:"+this.getPrice()+
+						",Stock:"+this.getStock()+
+						"}";
+		return json;
 	}
 }

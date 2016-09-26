@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpringApplicationContextHolder implements ApplicationContextAware {
+public class WebStoreAppCtxHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext = null;
 
@@ -16,6 +16,6 @@ public class SpringApplicationContextHolder implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-       SpringApplicationContextHolder.applicationContext = applicationContext;
+    	WebStoreAppCtxHolder.applicationContext = applicationContext;
     }
 }

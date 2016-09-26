@@ -18,6 +18,7 @@ public class OrderItem implements Serializable{
 	private Order order;
     private Product product;
     private int quantity;
+    //region -Getters and Setters
     @Id
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -41,5 +42,15 @@ public class OrderItem implements Serializable{
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Order:"+this.getOrder()+
+						",Product:"+this.getProduct()+
+						",Quantity:"+this.getQuantity()+
+						"}";
+		return json;
 	}
 }

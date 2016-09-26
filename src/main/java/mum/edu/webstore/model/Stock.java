@@ -11,6 +11,7 @@ public class Stock extends Model {
     @JoinColumn(name = "product_id") 
     private Product product; 
 	int quantity;
+	//region -Getters and Setters
 	public Product getProduct() {
 		return product;
 	}
@@ -22,5 +23,16 @@ public class Stock extends Model {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Product:"+this.getProduct()+
+						",Quantity:"+this.getQuantity()+
+						"}";
+		return json;
 	}
 }

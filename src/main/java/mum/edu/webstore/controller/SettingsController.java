@@ -11,18 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class LocaleController {
+public class SettingsController {
 	@Autowired
 	MessageSource messageSource;
 	@RequestMapping(value = "/locale")
 	public String changeLocale(@RequestParam(value = "lang") String lang,
 			@RequestHeader(value = "referer", required = false) final String referer,
-			HttpServletResponse response) {
+			HttpServletResponse response) 
+	{
 		// create cookie and set it in response
 		Cookie cookie = new Cookie("lang", lang.toString());
 		response.addCookie(cookie);
 		// render hello.jsp page
 		return "redirect:"+referer;
 	}
-
+	@RequestMapping(value = "/currency")
+	public String changeCurrency(@RequestParam(value = "currency") String currency,
+			@RequestHeader(value = "referer", required = false) final String referer,
+			HttpServletResponse response) 
+	{
+		// create cookie and set it in response
+		Cookie cookie = new Cookie("currency", currency.toString());
+		response.addCookie(cookie);
+		// render hello.jsp page
+		return "redirect:"+referer;
+	}
 }

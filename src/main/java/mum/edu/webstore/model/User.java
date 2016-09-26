@@ -10,7 +10,7 @@ public class User extends Model {
     private String username;
     private String password;
     private String passwordConfirm;
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="user_role",
          joinColumns=
          @JoinColumn(name="user_id"),
@@ -18,9 +18,9 @@ public class User extends Model {
          @JoinColumn(name="role_id")
     )
     private Set<Role> roles;
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private Customer customer;
-    
+    //region -Getters and Setters
     public String getUsername() {
         return username;
     }
@@ -62,5 +62,16 @@ public class User extends Model {
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",UserName:"+this.getUsername()+
+						",Customer:"+this.getCustomer()+
+						"}";
+		return json;
 	}
 }

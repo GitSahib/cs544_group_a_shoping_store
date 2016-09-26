@@ -21,6 +21,7 @@ public class CustomerValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastName", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "street", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phoneNumber", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
         
     }
 }

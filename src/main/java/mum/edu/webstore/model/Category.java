@@ -14,6 +14,7 @@ public class Category extends Model{
 	private String imageUrl;
 	@OneToMany(mappedBy="category")
 	private List<Product> products;
+	//region -Getters and Setters
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -37,5 +38,17 @@ public class Category extends Model{
 	}
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Name:"+this.getName()+
+						",Description:"+this.getDescription()+
+						",ImageUrl:"+this.getImageUrl()+
+						"}";
+		return json;
 	}
 }

@@ -15,6 +15,7 @@ public class City extends ModelAddress {
 	private State state;
 	@OneToMany(mappedBy="city")
 	private List<Address> addresses;
+	//region -Getters and Setters
 	public List<Address> getAddresses() {
 		return addresses;
 	}
@@ -37,6 +38,16 @@ public class City extends ModelAddress {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",Code:"+this.getCode()+
+						",Name:"+this.getName()+
+						",State:"+this.getState()+
+						"}";
+		return json;
+	}
 	
 }
