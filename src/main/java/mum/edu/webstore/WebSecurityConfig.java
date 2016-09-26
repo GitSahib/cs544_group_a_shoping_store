@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/admin**").hasAuthority("Admin")
         .antMatchers("/admin/**").hasAuthority("Admin")
 		.antMatchers("/checkout**").authenticated()
+		.antMatchers("/order**").authenticated()
 		.and()
 		    .formLogin().loginPage("/login").failureUrl("/login?error")
 		    .usernameParameter("username").passwordParameter("password")
