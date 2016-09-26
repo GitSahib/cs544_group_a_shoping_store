@@ -29,7 +29,6 @@ import mum.edu.webstore.model.Product;
 import mum.edu.webstore.model.Stock;
 import mum.edu.webstore.service.CategoryService;
 import mum.edu.webstore.service.ProductService;
-import mum.edu.webstore.service.StockService;
 
 @Controller
 @RequestMapping("/admin")
