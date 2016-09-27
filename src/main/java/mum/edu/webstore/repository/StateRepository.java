@@ -10,6 +10,6 @@ import mum.edu.webstore.model.State;
 
 public interface StateRepository extends JpaRepository<State, Long> {
 
-		List<State> findByCountryId(long id);
+	
 
 }

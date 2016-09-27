@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 import java.util.ArrayList;
 import java.util.List;

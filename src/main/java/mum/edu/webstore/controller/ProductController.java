@@ -72,7 +72,7 @@ public class ProductController {
         	
         	Stock stock = new Stock();
         	stock.setProduct(product);
-        	stock.setQuantity(product.getStockNumber());
+        	stock.setQuantity(product.getQuantity());
         	product.setStock(stock);
         	
         	if(file.getSize() > 0) {

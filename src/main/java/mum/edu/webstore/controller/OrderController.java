@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -78,9 +78,9 @@ public class OrderController {
     	
     	
     	order.setCustomer(customer);
-    	order.setTotal(cart.getTotalPrice());
+    	order.setTotal(cart.getGrandTotal());
     	
-    	for(CartItem ci : cart.getItems()) {
+    	for(CartItem ci : cart.getCartItems()) {
     		OrderItem oi = new OrderItem();
     		
     		oi.setOrder(order);

@@ -27,13 +27,16 @@ public class AddressServiceImpl implements AddressService {
 	public List<Country> getAllCountries() {
 		return countryRepository.findAll();
 	}
-	@Override
-	public List<State> getStates(long country_id) {
-		return stateRepository.findByCountryId(country_id);
-	}
+	
 	@Override
 	public List<City> getCities(String state_code) {
 		return cityRepository.findByStateCode(state_code);
+	}
+
+	@Override
+	public List<State> getStates(long country_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
     
 }

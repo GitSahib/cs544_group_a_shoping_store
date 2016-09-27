@@ -33,13 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/images/**").permitAll()
         .antMatchers("/admin**").hasAuthority("Admin")
         .antMatchers("/admin/**").hasAuthority("Admin")
-		.antMatchers("/checkout**").authenticated()
-<<<<<<< HEAD
 		.antMatchers("/gateway/**").authenticated()
+		.antMatchers("/checkout**").authenticated()
 		.antMatchers("/customer/cart/**").authenticated()
-=======
 		.antMatchers("/order**").authenticated()
->>>>>>> origin
 		.and()
 		    .formLogin().loginPage("/login").failureUrl("/login?error")
 		    .usernameParameter("username").passwordParameter("password")

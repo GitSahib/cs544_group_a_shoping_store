@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package mum.edu.webstore.model;
 
 import java.util.List;
@@ -11,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
@@ -26,6 +27,8 @@ public class Product extends Model{
 	private String description;
 	private String imageUrl;
 	private double price;
+	@Transient
+	private int quantity;
 	@OneToOne(optional=false,cascade=CascadeType.ALL, 
 		       mappedBy="product",targetEntity=Stock.class)
 	private Stock stock;
@@ -85,85 +88,11 @@ public class Product extends Model{
 						"}";
 		return json;
 	}
-}
-=======
-package mum.edu.webstore.model;
-
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import org.springframework.data.annotation.Transient;
-@Entity
-@Table(name="product")
-public class Product extends Model{
-	@ManyToOne
-	private Category category;
-	private String name;
-	private String description;
-	private String imageUrl;
-	private double price;
-	
-	@Transient
-	private int stockNumber;
-	
-
-	@OneToOne(optional=false,cascade=CascadeType.ALL, 
-		       mappedBy="product",targetEntity=Stock.class)
-	private Stock stock;
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private Set<OrderItem> orderItems;
-	
-	
-	public int getStockNumber() {
-		return stockNumber;
+	public int getQuantity() {
+		return quantity;
 	}
-	public void setStockNumber(int stockNumber) {
-		this.stockNumber = stockNumber;
-	}
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getImageUrl() {
-		return imageUrl;
-	}
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public Stock getStock() {
-		return stock;
-	}
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 }
->>>>>>> origin
+
