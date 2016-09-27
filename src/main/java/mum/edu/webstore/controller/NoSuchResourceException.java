@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 public class NoSuchResourceException extends RuntimeException {
 	private static final long serialVersionUID = 1L;

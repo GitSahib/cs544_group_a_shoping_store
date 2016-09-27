@@ -1,9 +1,17 @@
-<head>
+<head lang="ur">
 <title>Web Store Group-A - HOME</title>
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="${contextPath}/resources/css/style.css" rel="stylesheet"
+	type="text/css" media="all" />
+	<link href="${contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/btn.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/has-message.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/text.css" rel="stylesheet"
 	type="text/css" media="all" />
 <link href="${contextPath}/resources/css/form.css" rel="stylesheet"
 	type="text/css" media="all" />
@@ -16,6 +24,7 @@
 	type="text/css" media="all" />
 <script type="text/javascript"
 	src="${contextPath}/resources/js/megamenu.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();

@@ -1,5 +1,4 @@
 package mum.edu.webstore;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,8 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -36,19 +34,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/admin**").hasAuthority("Admin")
         .antMatchers("/admin/**").hasAuthority("Admin")
 		.antMatchers("/checkout**").authenticated()
+<<<<<<< HEAD
+		.antMatchers("/gateway/**").authenticated()
+		.antMatchers("/customer/cart/**").authenticated()
+=======
 		.antMatchers("/order**").authenticated()
+>>>>>>> origin
 		.and()
 		    .formLogin().loginPage("/login").failureUrl("/login?error")
 		    .usernameParameter("username").passwordParameter("password")
 		.and()
-		    .logout().logoutSuccessUrl("/login?logout");
+		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login");
        
-    }
-    private CsrfTokenRepository csrfTokenRepository() 
-    { 
-        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository(); 
-        repository.setSessionAttributeName("_csrf");
-        return repository; 
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

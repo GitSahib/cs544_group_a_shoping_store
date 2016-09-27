@@ -9,6 +9,7 @@ public class Role extends Model {
     private String name;
     @ManyToMany(mappedBy="roles",fetch=FetchType.EAGER)
     private Set<User> users;
+    //region Getters and Setters
     public String getName() {
         return name;
     }
@@ -25,4 +26,14 @@ public class Role extends Model {
     public void setUsers(Set<User> users) {
         this.users = users;
     }
+    //endregion
+  	@Override
+  	public String toString() {
+  		// TODO Auto-generated method stub
+  		String json = "{Id:"+this.getId()+
+  						",CreatedTime:"+this.getUpdatedTime()+
+  						",Name:"+this.getName()+
+  						"}";
+  		return json;
+  	}
 }

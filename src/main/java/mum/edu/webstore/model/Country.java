@@ -9,9 +9,14 @@ import javax.persistence.Table;
 @Entity 
 @Table(name="country")
 public class Country extends Model{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
-	@OneToMany(mappedBy="country")
-	private List<State> states; 
+	@OneToMany
+	private List<State> states;
+	//region Getters and Setters
 	public String getName() {
 		return name;
 	}
@@ -26,5 +31,15 @@ public class Country extends Model{
 
 	public void setStates(List<State> states) {
 		this.states = states;
+	}
+	//endregion
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Name:"+this.getName()+
+						"}";
+		return json;
 	}
 }

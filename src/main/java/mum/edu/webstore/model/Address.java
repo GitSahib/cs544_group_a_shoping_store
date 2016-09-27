@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Table(name="address")
 public class Address extends Model{
 	private String street;
+	
 	@ManyToOne
 	private City city;
 	private String zip;
@@ -41,4 +42,15 @@ public class Address extends Model{
 	public void setStreet(String street) {
 		this.street = street;
 	} 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String json = "{Id:"+this.getId()+
+						",CreatedTime:"+this.getUpdatedTime()+
+						",Street:"+this.getStreet()+
+						",City:"+this.getCity()+
+						",Zip:"+this.getZip()+
+						"}";
+		return json;
+	}
 }

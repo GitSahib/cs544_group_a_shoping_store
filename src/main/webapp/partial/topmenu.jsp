@@ -1,24 +1,26 @@
+<%@ page import="mum.edu.webstore.model.Cart" %>
+<%@ page import="mum.edu.webstore.model.CartItem" %>
 <div class="header-bottom">
 	<div class="wrap">
 		<div class="header-bottom-left">
 			<div class="logo">
-				<a href="index"><img
+				<a href="/index"><img
 					src="${contextPath}/resources/images/logo.png" alt="" /></a>
 			</div>
 			<div class="menu">
 				<ul class="megamenu skyblue">
-					<li class="active grid"><a href="index">Home</a></li>
-					<li><a class="color4" href="#">women</a>
+					<li class="active grid"><a href="/index">Home</a></li>
+					<li><a class="color4" href="/#">women</a>
 						<div class="megapanel">
 							<div class="row">
 								<div class="col1">
 									<div class="h_nav">
 										<h4>Contact Lenses</h4>
 										<ul>
-											<li><a href="womens">Daily-wear soft lenses</a></li>
-											<li><a href="womens">Extended-wear</a></li>
-											<li><a href="womens">Lorem ipsum </a></li>
-											<li><a href="womens">Planned replacement</a></li>
+											<li><a href="/womens">Daily-wear soft lenses</a></li>
+											<li><a href="/womens">Extended-wear</a></li>
+											<li><a href="/womens">Lorem ipsum </a></li>
+											<li><a href="/womens">Planned replacement</a></li>
 										</ul>
 									</div>
 								</div>
@@ -26,10 +28,10 @@
 									<div class="h_nav">
 										<h4>Sun Glasses</h4>
 										<ul>
-											<li><a href="womens">Heart-Shaped</a></li>
-											<li><a href="womens">Square-Shaped</a></li>
-											<li><a href="womens">Round-Shaped</a></li>
-											<li><a href="womens">Oval-Shaped</a></li>
+											<li><a href="/womens">Heart-Shaped</a></li>
+											<li><a href="/womens">Square-Shaped</a></li>
+											<li><a href="/womens">Round-Shaped</a></li>
+											<li><a href="/womens">Oval-Shaped</a></li>
 										</ul>
 									</div>
 								</div>
@@ -37,26 +39,26 @@
 									<div class="h_nav">
 										<h4>Eye Glasses</h4>
 										<ul>
-											<li><a href="womens">Anti Reflective</a></li>
-											<li><a href="womens">Aspheric</a></li>
-											<li><a href="womens">Bifocal</a></li>
-											<li><a href="womens">Hi-index</a></li>
-											<li><a href="womens">Progressive</a></li>
+											<li><a href="/womens">Anti Reflective</a></li>
+											<li><a href="/womens">Aspheric</a></li>
+											<li><a href="/womens">Bifocal</a></li>
+											<li><a href="/womens">Hi-index</a></li>
+											<li><a href="/womens">Progressive</a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color5" href="#">Men</a>
+					<li><a class="color5" href="/#">Men</a>
 						<div class="megapanel">
 							<div class="col1">
 								<div class="h_nav">
 									<h4>Contact Lenses</h4>
 									<ul>
-										<li><a href="mens">Daily-wear soft lenses</a></li>
-										<li><a href="mens">Extended-wear</a></li>
-										<li><a href="mens">Lorem ipsum </a></li>
-										<li><a href="mens">Planned replacement</a></li>
+										<li><a href="/mens">Daily-wear soft lenses</a></li>
+										<li><a href="/mens">Extended-wear</a></li>
+										<li><a href="/mens">Lorem ipsum </a></li>
+										<li><a href="/mens">Planned replacement</a></li>
 									</ul>
 								</div>
 							</div>
@@ -64,10 +66,10 @@
 								<div class="h_nav">
 									<h4>Sun Glasses</h4>
 									<ul>
-										<li><a href="mens">Heart-Shaped</a></li>
-										<li><a href="mens">Square-Shaped</a></li>
-										<li><a href="mens">Round-Shaped</a></li>
-										<li><a href="mens">Oval-Shaped</a></li>
+										<li><a href="/mens">Heart-Shaped</a></li>
+										<li><a href="/mens">Square-Shaped</a></li>
+										<li><a href="/mens">Round-Shaped</a></li>
+										<li><a href="/mens">Oval-Shaped</a></li>
 									</ul>
 								</div>
 							</div>
@@ -75,17 +77,17 @@
 								<div class="h_nav">
 									<h4>Eye Glasses</h4>
 									<ul>
-										<li><a href="mens">Anti Reflective</a></li>
-										<li><a href="mens">Aspheric</a></li>
-										<li><a href="mens">Bifocal</a></li>
-										<li><a href="mens">Hi-index</a></li>
-										<li><a href="mens">Progressive</a></li>
+										<li><a href="/mens">Anti Reflective</a></li>
+										<li><a href="/mens">Aspheric</a></li>
+										<li><a href="/mens">Bifocal</a></li>
+										<li><a href="/mens">Hi-index</a></li>
+										<li><a href="/mens">Progressive</a></li>
 									</ul>
 								</div>
 							</div>
 						</div></li>
-					<li><a class="color6" href="other">Other</a></li>
-					<li><a class="color7" href="other">Purchase</a></li>
+					<li><a class="color6" href="/other">Other</a></li>
+					<li><a class="color7" href="/other">Purchase</a></li>
 				</ul>
 			</div>
 		</div>
@@ -99,29 +101,44 @@
 			</div>
 			<div class="tag-list">
 				<ul class="icon1 sub-icon1 profile_img">
-					<li><a class="active-icon c1" href="#"> </a>
+					<li><a class="active-icon c1" href="/#"> </a>
 						<ul class="sub-icon1 list">
-							<li><h3>sed diam nonummy</h3>
-								<a href=""></a></li>
-							<li><p>
-									Lorem ipsum dolor sit amet, consectetuer <a href="">adipiscing
-										elit, sed diam</a>
-								</p></li>
+							<li><h3>Logged in Customer</h3>
+								<a href="/"></a></li>
+							<li><p><%=request.getAttribute("name") %></p></li>
 						</ul></li>
 				</ul>
 				<ul class="icon1 sub-icon1 profile_img">
-					<li><a class="active-icon c2" href="#"> </a>
+					<li>
+						<a class="active-icon c2" href="/checkout"></a>
 						<ul class="sub-icon1 list">
+						
+						<% Object cartItems = request.getSession().getAttribute("cartItems");
+						   if (cartItems !=null)
+						   {
+							  Cart cart =(Cart) request.getSession().getAttribute("cartsession");
+							  if(cart !=null){
+						   	  for(CartItem item:cart.getCartItems())
+						   	  {
+						   %>
+						   <li><h3>Product:<%=item.getProduct().getName() %></h3></li>
+							<li><p>Quantity:<%=item.getQuantity() %></p></li>
+						   <% }}
+						   } else { %>
+							
 							<li><h3>No Products</h3>
-								<a href=""></a></li>
-							<li><p>
-									Lorem ipsum dolor sit amet, consectetuer <a href="">adipiscing
-										elit, sed diam</a>
-								</p></li>
-						</ul></li>
+								<a href="/"></a></li>
+							<li>
+								<p>
+									Your shopping cart is empty
+								</p>
+							</li>
+							<% } %>
+						</ul>
+					</li>
 				</ul>
 				<ul class="last">
-					<li><a href="#">Cart(0)</a></li>
+					<li><a href="/#">Cart(<%=request.getSession().getAttribute("cartItems")!=null?request.getSession().getAttribute("cartItems"):0 %>)</a></li>
 				</ul>
 			</div>
 		</div>

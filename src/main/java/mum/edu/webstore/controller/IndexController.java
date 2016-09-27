@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +19,10 @@ public class IndexController {
     public String home(Model model) {
     	model.addAttribute("products", productService.getAll());
           return "index";
+    }
+    @RequestMapping(value = {"/about"}, method = RequestMethod.GET)
+    public String about(Model model) {
+          return "about";
     }
     @RequestMapping(value = {"/contact", "/contact.html","contact.jsp"}, method = RequestMethod.GET)
     public String contact(Model model) {
