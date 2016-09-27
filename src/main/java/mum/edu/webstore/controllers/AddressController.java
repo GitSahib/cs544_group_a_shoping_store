@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mum.edu.webstore.model.City;
+import mum.edu.webstore.model.Country;
 import mum.edu.webstore.model.SimpleCity;
+import mum.edu.webstore.model.SimpleCountry;
 import mum.edu.webstore.model.SimpleState;
 import mum.edu.webstore.model.State;
 import mum.edu.webstore.service.AddressService;
@@ -20,6 +22,20 @@ public class AddressController {
 	
 	@Autowired
 	AddressService addressService;
+	
+	@RequestMapping(value="/address/countries")
+	@ResponseBody
+	public List<SimpleCountry> getCountries() {
+		List<Country> countries = addressService.getAllCountries();
+		List<SimpleCountry> result = new ArrayList<SimpleCountry>();
+		for(Country country : countries) {
+			SimpleCountry s = new SimpleCountry();
+			s.setId(country.getId());
+			s.setName(country.getName());
+			result.add(s);
+		}
+		return result;
+	}
 	
 	@RequestMapping(value="/address/states/{country_id}")
 	@ResponseBody

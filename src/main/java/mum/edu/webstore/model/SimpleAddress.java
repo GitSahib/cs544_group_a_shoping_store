@@ -1,6 +1,7 @@
 package mum.edu.webstore.model;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Embeddable
@@ -36,7 +37,10 @@ public class SimpleAddress {
 	public void setStreet(String street) {
 		this.street = street;
 	}
+	@NotNull
 	private String street;
+	
+	
 	private String country;
 	private String state;
 	private String city;
