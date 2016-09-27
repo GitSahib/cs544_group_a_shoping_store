@@ -22,7 +22,11 @@
                     <div>
                         <form:input type="hidden" placeholder="EMail" path="email" />
                     </div>            
-               
+               		<div>
+                    	 <form:input type="text" path="phoneNumber" placeholder="Phone Number" />
+                    	 <div class="clear"></div><label class="error"><form:errors path="phoneNumber"></form:errors></label>
+                
+                    </div>
                 </div>
                 <div class="col_1_of_2 span_1_of_2">
                     <div>
@@ -39,11 +43,7 @@
                         <form:input type="text" path="city" placeholder="City" />
                         <div class="clear"></div><label class="error"><form:errors path="city"></form:errors></label>
                     </div>
-                    <div>
-                    	 <form:input type="text" path="phoneNumber" placeholder="Phone Number" />
-                    	 <div class="clear"></div><label class="error"><form:errors path="phoneNumber"></form:errors></label>
-                
-                    </div>
+                    
                     <div>
 	                    <button class="grey">Submit</button>
 					</div>
