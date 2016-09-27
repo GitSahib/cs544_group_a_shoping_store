@@ -9,6 +9,8 @@
 			.getBean(CustomerService.class);
 	String name = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "";
 	Customer customer = customerService.getByEmail(name.toString());
+	UserService userService = WebStoreAppCtxHolder.getApplicationContext().getBean(UserService.class);
+	User user = userService.findByUsername(name);
 	int cartSize = 0;
 	if (customer != null) {
 		Cart cart = customer.getCart();
@@ -49,24 +51,22 @@
 		<div class="cssmenu">
 			<ul>
 				<li class="active"><a href="/login">Account</a></li> |
-
+				<li><a href="/orderList">My Orders</a></li> |
 				<li><a href="/wishlist">Wishlist</a></li> |
 				<%
 					if (customer != null && cartSize > 0) {
 				%>
 				<li><a href="/checkout">Checkout</a></li> |
-				<li><a href="/orderList">My Orders</a></li> |
+				
 				<%
 					}
 				%>
 				<%
-					if (name != "") {
-						UserService userService = WebStoreAppCtxHolder.getApplicationContext().getBean(UserService.class);
-						User user = userService.findByUsername(name);
-						if (user != null && user.getCustomer() != null)
+					if (user !=null) {						
+						if (user.getCustomer() != null)
 							name = user.getCustomer().getFirstName();
 				%>
-				<li><a href="/profile"><%=name%>
+				<li><a href="/"><%=name%>
 						<%
 							request.setAttribute("name", name);
 						%></a></li> |
