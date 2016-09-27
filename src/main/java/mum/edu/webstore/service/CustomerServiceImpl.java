@@ -1,5 +1,6 @@
 package mum.edu.webstore.service;
 
+import mum.edu.webstore.model.Cart;
 import mum.edu.webstore.model.Customer;
 import mum.edu.webstore.model.Role;
 import mum.edu.webstore.model.User;
@@ -14,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private CartService cartService;
     public void setCustomerRepository(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
 	}
@@ -22,6 +25,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void save(Customer customerForm) 
     {
+    	customerRepository.save(customerForm);
+    	Cart cart = new Cart();
+    	cart.setCustomer(customerForm);
+    	cartService.save(cart);
+    	customerForm.setCart(cart);
     	customerRepository.save(customerForm);
     }
     @Override

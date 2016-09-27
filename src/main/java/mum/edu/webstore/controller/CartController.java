@@ -61,6 +61,10 @@ public class CartController {
     		Model model, HttpServletRequest request,HttpSession session){
 		String name = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "";
 		Customer customer = customerService.getByEmail(name);
+		if(customer == null)
+		{
+			return "redirect:/customerinfo";
+		}
         Cart cart = customer.getCart();
         if (cart == null) {
 			cart = new Cart();

@@ -37,7 +37,7 @@ public class Customer extends Model {
 	private List<Order> orderList;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	User user;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToOne(mappedBy="customer",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "cartId")
     @JsonIgnore
     private Cart cart;

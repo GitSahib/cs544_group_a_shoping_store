@@ -1,4 +1,4 @@
-package mum.edu.webstore.controllers;
+package mum.edu.webstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
