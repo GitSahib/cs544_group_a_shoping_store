@@ -1,5 +1,6 @@
 package mum.edu.webstore.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="category")
-public class Category extends Model{
+public class Category extends Model {
 	private String name;
 	private String description;
 	private String imageUrl;

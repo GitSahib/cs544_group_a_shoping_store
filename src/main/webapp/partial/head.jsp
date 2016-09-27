@@ -5,6 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="${contextPath}/resources/css/style.css" rel="stylesheet"
 	type="text/css" media="all" />
+	<link href="${contextPath}/resources/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/btn.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/has-message.css" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="${contextPath}/resources/css/text.css" rel="stylesheet"
+	type="text/css" media="all" />
 <link href="${contextPath}/resources/css/form.css" rel="stylesheet"
 	type="text/css" media="all" />
 <link href='http://fonts.googleapis.com/css?family=Exo+2'
@@ -16,6 +24,7 @@
 	type="text/css" media="all" />
 <script type="text/javascript"
 	src="${contextPath}/resources/js/megamenu.js"></script>
+
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();

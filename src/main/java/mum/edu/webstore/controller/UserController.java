@@ -9,6 +9,9 @@ import mum.edu.webstore.service.UserService;
 import mum.edu.webstore.validator.CustomerValidator;
 import mum.edu.webstore.validator.UserValidator;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -67,7 +70,17 @@ public class UserController {
 		securityService.autologin(customerForm.getEmail(), customerForm.getPassword());
 		return "redirect:/index";
 	}
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	public String logout(HttpServletRequest request) {
+	    HttpSession session = request.getSession(false);
+	    session.invalidate();
+	    return "redirect:/index";
+	}
 
+	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
+	public String accessdenied() {
+	    return "accessdenied";
+	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
 		if (error != null)
@@ -75,13 +88,7 @@ public class UserController {
 
 		if (logout != null)
 			model.addAttribute("message", "You have been logged out successfully.");
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName(); //get logged in username
-	    User user = userService.findByUsername(name);
-	    if(user!=null)
-    	{
-    		model.addAttribute("user", user);
-    	}
+		
 		return "login";
 	}
 }

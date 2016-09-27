@@ -7,7 +7,11 @@ import java.util.Set;
 @Table(name = "user")
 public class User extends Model {
 	
-    private String username;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String username;
     private String password;
     private String passwordConfirm;
     @ManyToMany(fetch=FetchType.LAZY)

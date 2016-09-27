@@ -8,7 +8,8 @@ import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
+@Transactional
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
@@ -40,4 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findByName(String name) {
         return customerRepository.findByFirstName(name);
     }
+	@Override
+	public Customer getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByEmail(email);
+	}
 }

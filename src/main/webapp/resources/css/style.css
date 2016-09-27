@@ -32,6 +32,7 @@ body{
 	font-family: 'Exo 2', sans-serif;
 	background:#fff;
 }
+
 .wrap{
 	width:80%;
 	margin:0 auto;
@@ -335,7 +336,7 @@ body{
 	line-height: 1.8em;
 }
 .sub-icon1.list{
-	padding: 20px 0px;
+	padding: 20px 0px;z-index: 10000000 !important;
 }
 .sub-icon1 ul li p a{
 	color: #00405d;

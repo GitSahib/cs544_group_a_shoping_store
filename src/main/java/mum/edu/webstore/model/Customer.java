@@ -13,9 +13,16 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity // Table Name customer
 @Table(name = "customer")
 public class Customer extends Model {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	// region - Table properties
 	private String firstName;
 	private String lastName;
@@ -30,6 +37,10 @@ public class Customer extends Model {
 	private List<Order> orderList;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	User user;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "cartId")
+    @JsonIgnore
+    private Cart cart;
 	// endregion
 	// region - Transient Customer Form fields
 	@Transient
@@ -51,7 +62,7 @@ public class Customer extends Model {
 	public List<Order> getOrderList() {
 		return orderList;
 	}
-
+	
 	public void setOrderList(List<Order> orderList) {
 		this.orderList = orderList;
 	}
@@ -154,7 +165,13 @@ public class Customer extends Model {
 	public String getUsername() {
 		return username;
 	}
+	public Cart getCart() {
+		return cart;
+	}
 
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 	public void setUsername(String username) {
 		this.username = username;
 	}

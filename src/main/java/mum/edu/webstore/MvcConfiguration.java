@@ -1,5 +1,7 @@
 package mum.edu.webstore;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.MessageSource;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Autowired
 	LocaleChangeInterceptor localeChangeInterceptor;
+	@Autowired
+	ServletContext servletContext;
 	@Autowired
 	MessageSource messageSource;
 	@Override

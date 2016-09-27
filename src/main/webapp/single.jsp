@@ -47,9 +47,8 @@
 								for offer</a>
 						</p>
 						<div class="btn_form">
-							<form>
-								<input type="submit" value="buy" title="">
-							</form>
+						
+							<a class="btn btn-primary" href="/customer/cart/add/1">Add To Cart</a>
 						</div>
 						<span class="m_link"><a href="#">login to save in
 								wishlist</a> </span>

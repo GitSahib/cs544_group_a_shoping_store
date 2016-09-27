@@ -1,4 +1,5 @@
 $(function() {
+	
 	$("#language").change(
 			function() {
 				window.location = "locale?lang=" + this.value;

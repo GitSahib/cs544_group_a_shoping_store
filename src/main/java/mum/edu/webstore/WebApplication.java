@@ -14,12 +14,14 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
+	
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(WebApplication.class);
     }
-
+   
     public static void main(String[] args) throws Exception {
+    	
         SpringApplication.run(WebApplication.class, args);
     }
     @Bean(name = "messageSource")

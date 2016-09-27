@@ -18,7 +18,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -30,7 +30,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/customer/cart/add/1"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -40,7 +40,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic1.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic1.jpg" alt="" />
 									</div>
 									<div class="price">
 										<div class="cart-left">
@@ -49,7 +49,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic2.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic2.jpg" alt="" />
 									</div>
 									<div class="sale-box1">
 										<span class="on_sale title_shop">Sale</span>
@@ -71,7 +71,7 @@
 												<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -84,7 +84,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic3.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic3.jpg" alt="" />
 									</div>
 									<div class="price">
 										<div class="cart-left">
@@ -93,7 +93,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -103,7 +103,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic4.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic4.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -115,7 +115,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -125,7 +125,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic5.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic5.jpg" alt="" />
 									</div>
 									<div class="price">
 										<div class="cart-left">
@@ -134,7 +134,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -147,7 +147,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic6.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic6.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -159,7 +159,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -169,7 +169,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic7.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic7.jpg" alt="" />
 									</div>
 									<div class="sale-box1">
 										<span class="on_sale title_shop">Sale</span>
@@ -181,7 +181,7 @@
 												<span class="reducedfrom">$66.00</span> <span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -191,7 +191,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic8.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic8.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -203,7 +203,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -217,7 +217,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic8.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic8.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -229,7 +229,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -239,7 +239,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic4.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic4.jpg" alt="" />
 									</div>
 									<div class="price">
 										<div class="cart-left">
@@ -248,7 +248,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -258,7 +258,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic2.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic2.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -270,7 +270,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -284,7 +284,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic5.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic5.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -296,7 +296,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -306,7 +306,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic2.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic2.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -318,7 +318,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -328,7 +328,7 @@
 							<a href="single">
 								<div class="inner_content clearfix">
 									<div class="product_image">
-										<img src="${contextPath}/resources/images/pic3.jpg" alt="" />
+										<img src="${contextPath}/resources/images/products/pic3.jpg" alt="" />
 									</div>
 									<div class="sale-box">
 										<span class="on_sale title_shop">New</span>
@@ -340,7 +340,7 @@
 												<span class="actual">$12.00</span>
 											</div>
 										</div>
-										<div class="cart-right"></div>
+										<a class="cart-right" href="/addToCart"></a>
 										<div class="clear"></div>
 									</div>
 								</div>
@@ -349,6 +349,7 @@
 						<div class="clear"></div>
 					</div>
 				</div>
+				
 				<div class="rsidebar span_1_of_left">
 					<div class="top-border"></div>
 					<div class="border">
