@@ -9,8 +9,12 @@ import javax.persistence.Table;
 @Entity 
 @Table(name="country")
 public class Country extends Model{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
-	@OneToMany(mappedBy="country")
+	@OneToMany
 	private List<State> states;
 	//region Getters and Setters
 	public String getName() {

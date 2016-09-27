@@ -30,11 +30,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
         .authorizeRequests()
+        .antMatchers("/images/**").permitAll()
         .antMatchers("/admin**").hasAuthority("Admin")
         .antMatchers("/admin/**").hasAuthority("Admin")
 		.antMatchers("/checkout**").authenticated()
+<<<<<<< HEAD
 		.antMatchers("/gateway/**").authenticated()
 		.antMatchers("/customer/cart/**").authenticated()
+=======
+		.antMatchers("/order**").authenticated()
+>>>>>>> origin
 		.and()
 		    .formLogin().loginPage("/login").failureUrl("/login?error")
 		    .usernameParameter("username").passwordParameter("password")

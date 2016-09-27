@@ -19,7 +19,7 @@ public abstract class Model implements Serializable{
 	{
 	}
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	protected Date updatedTime;
