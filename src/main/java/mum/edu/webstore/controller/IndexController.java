@@ -32,4 +32,10 @@ public class IndexController {
     public String contact(Model model) {
           return "contact";
     }
+    @RequestMapping(value="/wishlist",method=RequestMethod.GET)
+    public String wishlist(Model model)
+    {
+  
+    	return "wishlist";
+    }
 }

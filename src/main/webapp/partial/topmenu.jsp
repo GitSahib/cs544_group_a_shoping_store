@@ -113,17 +113,19 @@
 						<a class="active-icon c2" href="/checkout"></a>
 						<ul class="sub-icon1 list">
 						
-						<% Object cartItems = request.getSession().getAttribute("cartItems");
-						   if (cartItems !=null)
+						<% Object cartItems = session.getAttribute("cartItems");
+						   Cart cart =(Cart) session.getAttribute("cartsession");
+						   if (cartItems !=null && cart.getCartItems() != null && cart.getCartItems().size() != 0)
 						   {
-							  Cart cart =(Cart) request.getSession().getAttribute("cartsession");
-							  if(cart !=null){
-						   	  for(CartItem item:cart.getCartItems())
-						   	  {
-						   %>
-						   <li><h3>Product:<%=item.getProduct().getName() %></h3></li>
-							<li><p>Quantity:<%=item.getQuantity() %></p></li>
-						   <% }}
+							 
+							   	  for(CartItem item:cart.getCartItems())
+							   	  {
+								   %>
+								   <li><h3>Product:<%=item.getProduct().getName() %></h3></li>
+									<li><p>Quantity:<%=item.getQuantity() %></p></li>
+								   <% 
+								   }
+						   	  
 						   } else { %>
 							
 							<li><h3>No Products</h3>

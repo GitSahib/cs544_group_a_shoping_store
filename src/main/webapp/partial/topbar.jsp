@@ -17,6 +17,7 @@
 		if(cart == null)
 		{
 			cartSize = 0;
+			session.setAttribute("cartItems", null);
 		}
 		else
 		{
