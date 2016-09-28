@@ -75,7 +75,7 @@ public class OrderController {
         model.addAttribute("order", new Order());
         model.addAttribute("countries", addressService.getAllCountries());
         model.addAttribute("paymentTypes", PaymentType.values());
-        return "order";
+        return "orders/order";
     }
     
     @RequestMapping(value = "/order", method = RequestMethod.POST)
@@ -122,19 +122,19 @@ public class OrderController {
     public String orderListGet(Model model, HttpSession session) {
     	
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    	org.springframework.security.core.userdetails.User spuser = (org.springframework.security.core.userdetails.User) auth.getPrincipal();
-    	User user = userService.findByUsername(spuser.getUsername());
+    	User user = userService.findByUsername(auth.getName());
+    	
     	Customer customer = user.getCustomer();
     	
     	model.addAttribute("orders", orderService.getAllByCustomer(customer.getId()));
     	
-        return "orderList";
+        return "orders/orderList";
     }
     
     @RequestMapping(value = "/orderDetail/{id}", method = RequestMethod.GET)
     public String orderDetailGet(@PathVariable long id, Model model, HttpSession session) {
     	model.addAttribute("order", orderService.get(id));
     	
-        return "orderDetail";
+        return "orders/orderDetail";
     }
 }
