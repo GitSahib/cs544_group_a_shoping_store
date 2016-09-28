@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import mum.edu.webstore.model.City;
+import mum.edu.webstore.model.Country;
 import mum.edu.webstore.model.SimpleCity;
+import mum.edu.webstore.model.SimpleCountry;
 import mum.edu.webstore.model.SimpleState;
 import mum.edu.webstore.model.State;
 import mum.edu.webstore.service.AddressService;
@@ -21,6 +23,34 @@ public class AddressController {
 	@Autowired
 	AddressService addressService;
 	
+	@RequestMapping(value="/address/countries")
+	@ResponseBody
+	public List<SimpleCountry> getCountries() {
+		List<Country> countries = addressService.getAllCountries();
+		List<SimpleCountry> result = new ArrayList<SimpleCountry>();
+		for(Country country : countries) {
+			SimpleCountry s = new SimpleCountry();
+			s.setId(country.getId());
+			s.setName(country.getName());
+			result.add(s);
+		}
+		return result;
+	}
+	
+	@RequestMapping(value="/address/allstates")
+	@ResponseBody
+	public List<SimpleState> getAllState() {
+		List<State> states = addressService.getAllStates();
+		List<SimpleState> result = new ArrayList<SimpleState>();
+		for(State state : states) {
+			SimpleState s = new SimpleState();
+			s.setCode(state.getCode());
+			s.setName(state.getName());
+			result.add(s);
+		}
+		return result;
+	}
+	
 	@RequestMapping(value="/address/states/{country_id}")
 	@ResponseBody
 	public List<SimpleState> getStates(@PathVariable long country_id) {
@@ -28,7 +58,7 @@ public class AddressController {
 		List<SimpleState> result = new ArrayList<SimpleState>();
 		for(State state : states) {
 			SimpleState s = new SimpleState();
-			s.setId(state.getId());
+			s.setCode(state.getCode());
 			s.setName(state.getName());
 			result.add(s);
 		}

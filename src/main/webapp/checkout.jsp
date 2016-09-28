@@ -1,4 +1,5 @@
 <jsp:include page="partial/taglib.jsp"></jsp:include>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="mum.edu.webstore.model.Cart"%>
 <%@ page import="mum.edu.webstore.model.CartItem"%>
 <!DOCTYPE HTML>
@@ -67,6 +68,33 @@
 							}
 						%>
 						
+						<div class="clear"></div>
+					<hr/>
+				<div class="col_3_of_3 span_3_of_3">
+		<form:form action="/order" method="POST" modelAttribute="order">
+			<h1>Shipping address</h1>
+			Street: <form:input path="shippingAddress.street"/>  <form:errors path="shippingAddress.street" style="color:red"></form:errors> <br/>
+			State: <form:select id="state" path="empty">
+			</form:select> <br/>
+			City: <form:select id="city" path="empty">
+			</form:select> <br/>
+			
+			<form:hidden id="hiddenCountry" path="shippingAddress.country" />
+			<form:hidden id="hiddenState" path="shippingAddress.state" />
+			<form:hidden id="hiddenCity" path="shippingAddress.city" />
+			
+			
+			Zip: <form:input path="shippingAddress.zip"/> <form:errors path="shippingAddress.zip" style="color:red"></form:errors> <br/>
+			<h3>Payment</h3>
+ 			PaymentType: <form:select path="paymentType">
+ 				<form:options items="${paymentTypes}"/>
+ 			</form:select> <br/>
+<hr/>
+			<input type="submit" value="Place Order" onclick="updateHiddenFields(); return true;"/>
+			
+		</form:form>
+	</div>
+	
 					</div>
 
 
@@ -76,13 +104,63 @@
 				</div>
 
 			</div>
-			<div class="rsidebar span_1_of_left">
-				<a class="btn btn-block btn-warning" href="/gateway/">Proceed to Checkout</a>
-				<a class="btn btn-block btn-success"">Grand Total: ${cart.grandTotal}</a>
-			</div>
+			
+			
+<!-- 			<div class="rsidebar span_1_of_left"> -->
+<!-- 				<a class="btn btn-block btn-warning" href="/gateway/">Proceed to Checkout</a> -->
+<%-- 				<a class="btn btn-block btn-success"">Grand Total: ${cart.grandTotal}</a> --%>
+<!-- 			</div> -->
 		</div>
 	</div>
 	<div class="clear"></div>
 	<jsp:include page="partial/footer.jsp"></jsp:include>
 </body>
+<script type="text/javascript" src="${contextPath}/resources/js/jquery1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$("#state").change(onStateChange);
+		getStateList();
+	});
+
+	function getStateList() {
+ 		$('#state').empty();
+ 		$.get( "address/allstates", function( data ) {
+	 			$.each(data, function (i, item) {
+	 			    $('#state').append($('<option>', { 
+	 			        value: item.code,
+	 			        text : item.name 
+	 			    }));
+	 			});
+	 			$('#state').trigger('change');
+ 			}, "json" );
+	}
+
+	function onStateChange() {
+		
+			var selected = $("#state option:selected");
+			$('#city').empty();
+			$.get( "address/cities/" + selected.val(), function( data ) {
+	 			$.each(data, function (i, item) {
+	 			    $('#city').append($('<option>', { 
+	 			        value: item.id,
+	 			        text : item.name 
+	 			    }));
+	 			});
+	 			$('#city').trigger('change');
+				}, "json" );
+	}
+
+	function updateHiddenFields() {
+		var selectedCountry = $("#country option:selected");
+		var selectedState = $("#state option:selected");
+		var selectedCity = $("#city option:selected");
+		
+		$('#hiddenCountry').val(selectedCountry.text());
+		$('#hiddenState').val(selectedState.text());
+		$('#hiddenCity').val(selectedCity.text());
+		
+		}
+	
+</script>
 </html>

@@ -6,12 +6,15 @@ import java.util.Iterator;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.Valid;
 
 @Entity
 @Table(name = "order_line")
@@ -22,14 +25,26 @@ public class Order extends Model {
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private Customer customer;
-	@ManyToOne
-	private Address shippingAddress;
+	@Embedded
+	@Valid
+	private SimpleAddress shippingAddress;
 	@Enumerated(EnumType.STRING)
 	private PaymentType paymentType;
 	private Timestamp orderDate;
 	private double total;
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderItem> orderItems;
+	private boolean paid;
+	
+	@Transient
+	private String empty;		//Placeholder, used in view, but no meaning.
+	
+	public String getEmpty() {
+		return empty;
+	}
+	public void setEmpty(String empty) {
+		this.empty = empty;
+	}
 	public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
@@ -43,10 +58,10 @@ public class Order extends Model {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public Address getShippingAddress() {
+	public SimpleAddress getShippingAddress() {
 		return shippingAddress;
 	}
-	public void setShippingAddress(Address shippingAddress) {
+	public void setShippingAddress(SimpleAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 	public PaymentType getPaymentType() {
@@ -93,6 +108,12 @@ public class Order extends Model {
 						",Total:"+this.getTotal()+
 						"}";
 		return json;
+	}
+	public boolean isPaid() {
+		return paid;
+	}
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}
 }
 

@@ -13,12 +13,26 @@
 <script type="text/javascript" src="${contextPath}/resources/js/jquery1.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		getCountryList();
 		$("#country").change(onCountryChange);
 		$("#state").change(onStateChange);
 
 		$('#state').trigger('change');
 
 	});
+
+	function getCountryList() {
+ 		$('#country').empty();
+ 		$.get( "address/countries", function( data ) {
+	 			$.each(data, function (i, item) {
+	 			    $('#country').append($('<option>', { 
+	 			        value: item.id,
+	 			        text : item.name 
+	 			    }));
+	 			});
+	 			$('#country').trigger('change');
+ 			}, "json" );
+	}
  
 	function onCountryChange() {
 	
@@ -108,16 +122,11 @@
 			<form:hidden id="hiddenCity" path="shippingAddress.city" />
 			
 			
-				
-			<%--  			City: <form:input path="shippingAddress.city"/> <br/> --%>
-<%--  			State: <form:input path="shippingAddress.state"/> <br/> --%>
-			Zip1: <form:input path="shippingAddress.zip"/> <form:errors path="shippingAddress.zip"></form:errors> <br/>
+			Zip: <form:input path="shippingAddress.zip"/> <form:errors path="shippingAddress.zip" style="color:red"></form:errors> <br/>
 			<h3>Payment</h3>
  			PaymentType: <form:select path="paymentType">
  				<form:options items="${paymentTypes}"/>
  			</form:select> <br/>
-<%--  			<form:input path="paymentType"/> <form:errors path="paymentType"></form:errors>  --%>
-
 <hr/>
 			<input type="submit" value="Submit" onclick="updateHiddenFields(); return true;"/>
 			

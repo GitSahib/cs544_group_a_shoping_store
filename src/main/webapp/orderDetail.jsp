@@ -25,14 +25,16 @@
 					<th>Price</th>
 					<th>Image</th>
 					<th>Quantity</th>
+					<th>Line Price</th>
 			</tr>
 			<c:forEach var="item" items="${order.orderItems}">
 				<tr>
 					<td>${item.product.name}</td>
 					<td>${item.product.category.name}</td>
 					<td>$${item.product.price}</td>
-					<td><img src="${item.product.imageUrl}"/></td>
+					<td><img src="${item.product.imageUrl}" /></td>
 					<td>${item.quantity}</td>
+					<td>$${item.total}</td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -43,11 +45,10 @@
 	
 	<h2>Shipping Address</h2>
 	<div>
-		Street: ${order.shippingAddress.street} <br/>
-		City: ${order.shippingAddress.city} <br/>
-		State: ${order.shippingAddress.state} <br/>
-		Country: ${order.shippingAddress.country} <br/>
-		Zip: ${order.shippingAddress.zip} <br/>
+		<b>Street:</b> ${order.shippingAddress.street} <br/>
+		<b>City:</b> ${order.shippingAddress.city} <br/>
+		<b>State:</b> ${order.shippingAddress.state} <br/>
+		<b>Zip:</b> ${order.shippingAddress.zip} <br/>
 	
 	</div>
 	
@@ -56,6 +57,18 @@
 		Payment type: ${order.paymentType} <br/>
 
 	</div>
+	
+	<h2>Pay</h2>
+	<c:if test="${not order.paid}">
+		<div>
+			<a href="/gateway/checkout/${order.id}">Pay Now</a>
+		</div>
+	</c:if>
+	<c:if test="${order.paid}">
+		<div>
+			<h3 style="color:green">You have already paid for this order. thank you.</h3>
+		</div>
+	</c:if>
 	
 	<br/>
 	<a href="/orderList">Return to order list</a>
