@@ -20,6 +20,6 @@ public class WebStoreAppCtxHolder implements ApplicationContextAware {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
     	WebStoreAppCtxHolder.applicationContext = applicationContext;
-    	gateway = BraintreeGatewayFactory.fromStaticConfig();
+    	gateway = BTGatewayFactory.fromStaticConfig();
     }
 }

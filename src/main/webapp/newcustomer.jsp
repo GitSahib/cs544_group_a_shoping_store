@@ -1,5 +1,6 @@
 <jsp:include page="partial/taglib.jsp"></jsp:include>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE HTML>
 <html>
 <jsp:include page="partial/head.jsp"></jsp:include>
@@ -40,13 +41,18 @@
                         <div class="clear"></div><label class="error"><form:errors path="street"></form:errors></label>
                     </div>
                     <div>                   
-                        <form:select id="state" path="state"   onchange="change_country(this.value)" class="frm-field required" >
-                            <option value="IOWA">IOWA</option>
-                        </form:select>
+                       <form:select path="state">
+						  <c:forEach items="${states}" var="state">
+						    <option value="${state.code}">
+						        ${state.name}
+						    </option>
+						  </c:forEach>
+						</form:select>
                         <div class="clear"></div><label class="error"><form:errors path="state"></form:errors></label>
                     </div>
                     <div>
                         <form:input type="text" path="city" placeholder="City" />
+                        
                         <div class="clear"></div><label class="error"><form:errors path="city"></form:errors></label>
                     </div>
                     <div>

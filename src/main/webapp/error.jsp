@@ -20,12 +20,8 @@
 		...</p>
 
 	<p>Support may ask you to right click to view page source.</p>
-
-    	<%  String message = (String)request.getAttribute("message"); %>
-    	<%=request.getAttribute("ex")%>
     </div>
 	<div>${url}</div>
-	<div><%=message %></div>
 	<ul>
 	
 	</ul>

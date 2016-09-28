@@ -2,6 +2,7 @@ package mum.edu.webstore.controller;
 
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +20,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import mum.edu.webstore.model.Customer;
 import mum.edu.webstore.model.Role;
+import mum.edu.webstore.model.State;
 import mum.edu.webstore.model.User;
 import mum.edu.webstore.service.CustomerService;
 import mum.edu.webstore.service.RoleService;
 import mum.edu.webstore.service.SecurityService;
+import mum.edu.webstore.service.StateService;
 import mum.edu.webstore.service.UserService;
 import mum.edu.webstore.validator.CustomerValidator;
 import mum.edu.webstore.validator.UserValidator;
@@ -34,6 +37,8 @@ public class UserController {
 	private CustomerService customerService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private StateService stateService;
 	@Autowired
 	private RoleService roleService;
 	private Logger log = Logger.getLogger(UserController.class);
@@ -47,7 +52,8 @@ public class UserController {
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {
 		model.addAttribute("customerForm", new Customer());
-
+		List<State> states = stateService.getAll();
+		model.addAttribute("states",states);
 		return "newcustomer";
 	}
 	
@@ -64,7 +70,8 @@ public class UserController {
 	public String customerinfo(@ModelAttribute("customerForm") Customer customerForm, BindingResult bindingResult, Model model) {
 		customerValidator.validate(customerForm, bindingResult);
 		// model.addAttribute(bindingResult.getFieldError());
-		
+		List<State> states = stateService.getAll();
+		model.addAttribute("states",states);
 		log.info(customerForm);
 		if (bindingResult.hasErrors()) {
 			log.error("Customer Form Invalid");

@@ -10,7 +10,7 @@ import java.util.Properties;
 import com.braintreegateway.BraintreeGateway;
 import com.braintreegateway.Environment;
 
-public class BraintreeGatewayFactory {
+public class BTGatewayFactory {
     public static BraintreeGateway fromConfigMapping(Map<String, String> mapping) {
         return new BraintreeGateway(
             mapping.get("BT_ENVIRONMENT"),

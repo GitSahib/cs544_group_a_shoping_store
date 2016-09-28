@@ -130,7 +130,7 @@
 		<div class="wrap">
 			<div class="copy">
 				<p>
-					© 2014 Template by <a href="http://w3layouts.com" target="_blank">w3layouts</a>
+					Fairfield Glasses Shop
 				</p>
 			</div>
 			<div class="f-list2">
