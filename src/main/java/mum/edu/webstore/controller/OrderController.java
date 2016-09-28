@@ -115,7 +115,7 @@ public class OrderController {
 
     	cartItemService.removeAllCartItems(cart);
     	
-        return "redirect:/orderList";
+        return "redirect:/orderDetail/"+order.getId();
     }
     
     @RequestMapping(value = "/orderList", method = RequestMethod.GET)
