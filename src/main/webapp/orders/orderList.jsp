@@ -4,7 +4,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<link href="${contextPath}/resources/css/table.css" rel="stylesheet"
+	type="text/css" media="all" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +17,7 @@
 	
 	<h1>My Orders</h1>
 	<div>
-		<table border="1">
+		<table class="table">
 			<tr>
 					<th>ID</th>
 					<th>Items</th>
@@ -31,8 +32,10 @@
 					<td>$${order.total}</td>
 					<td><a href="/orderDetail/${order.id}">Details</a></td>
 					<td>
-						<c:if test="${not order.paid}"><a href="/gateway/checkout/${order.id}">Pay Now</a></c:if>				
+						<c:if test="${not order.paid}"><a href="/gateway/checkout/${order.id}">Pay Now</a></c:if>
+						Edit | Cancel				
 					</td>
+					
 				</tr>
 			</c:forEach>
 		</table>
