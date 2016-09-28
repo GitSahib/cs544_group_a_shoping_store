@@ -38,7 +38,7 @@ public class Customer extends Model {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	User user;
 	@OneToOne(mappedBy="customer",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JoinColumn(name = "cartId")
+    @JoinColumn(name = "cart_id")
     @JsonIgnore
     private Cart cart;
 	// endregion
