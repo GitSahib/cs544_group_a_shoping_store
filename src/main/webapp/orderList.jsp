@@ -22,6 +22,7 @@
 					<th>Items</th>
 					<th>Total Price</th>
 					<th>Details</th>
+					<th>Operation</th>
 			</tr>
 			<c:forEach var="order" items="${orders}">
 				<tr>
@@ -29,10 +30,19 @@
 					<td>${order.productSummary}</td>
 					<td>$${order.total}</td>
 					<td><a href="/orderDetail/${order.id}">Details</a></td>
+					<td>
+						<c:if test="${not order.paid}"><a href="/gateway/checkout/${order.id}">Pay Now</a></c:if>				
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		
+	</div>
+	
+	<br/>
+	<br/>
+	<div>
+		<a href="/">Back to Home Page</a>
 	</div>
 	
 </body>

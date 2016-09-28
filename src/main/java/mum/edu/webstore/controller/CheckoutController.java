@@ -6,11 +6,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import mum.edu.webstore.model.Cart;
 import mum.edu.webstore.model.Customer;
+import mum.edu.webstore.model.Order;
 import mum.edu.webstore.service.CartService;
 import mum.edu.webstore.service.CustomerService;
 
@@ -33,7 +35,7 @@ public class CheckoutController {
         return "other";
     }
     @RequestMapping(value="/checkout",method = RequestMethod.GET)
-    String checkout(HttpServletRequest request,HttpSession session){
+    String checkout(HttpServletRequest request,HttpSession session, Model model){
     	String name = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "";
 		Customer customer = customerService.getByEmail(name.toString());
 		if(customer == null)
@@ -44,6 +46,7 @@ public class CheckoutController {
 		session.setAttribute("cartItems", cart.getCartItems().size());
 		request.setAttribute("cart", cart);
 		session.setAttribute("cartsession",cart);
+		model.addAttribute("order",new Order());
         return "checkout";
     }
 }

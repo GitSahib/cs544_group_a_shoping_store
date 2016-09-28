@@ -39,4 +39,8 @@ public class AddressServiceImpl implements AddressService {
 		return null;
 	}
     
+	@Override
+	public List<State> getAllStates() {
+		return stateRepository.findAll();
+	}
 }

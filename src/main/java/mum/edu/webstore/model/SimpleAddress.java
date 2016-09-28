@@ -4,6 +4,8 @@ import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
+
 @Embeddable
 public class SimpleAddress {
 	
@@ -38,10 +40,12 @@ public class SimpleAddress {
 		this.street = street;
 	}
 	@NotNull
+	@Length(min=3, max=200, message="Address must be at least 3 characters long and not more than 200 characters" )
 	private String street;
 	
 	
 	private String country;
+	
 	private String state;
 	private String city;
 	

@@ -1,5 +1,9 @@
 package mum.edu.webstore.controller;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -23,6 +27,8 @@ import mum.edu.webstore.model.OrderItem;
 import mum.edu.webstore.model.PaymentType;
 import mum.edu.webstore.model.User;
 import mum.edu.webstore.service.AddressService;
+import mum.edu.webstore.service.CartItemService;
+import mum.edu.webstore.service.CustomerService;
 import mum.edu.webstore.service.OrderService;
 import mum.edu.webstore.service.SecurityService;
 import mum.edu.webstore.service.UserService;
@@ -44,14 +50,27 @@ public class OrderController {
 	@Autowired
 	AddressService addressService;
 	
+	@Autowired
+	CustomerService customerService;
+	
+ 	@Autowired
+ 	private CartItemService cartItemService;
 	
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String orderIndex(Model model, HttpSession session) {
+    public String orderIndex(Model model, HttpSession session, HttpServletRequest request) {
     	
-    	Cart cart = (Cart) session.getAttribute("cart");
-    	if(cart == null || cart.getIsEmpty()) {
-    		return "index";
-    	}
+        String name = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "";
+		Customer customer = customerService.getByEmail(name.toString());
+		Cart cart = customer.getCart();
+		if(cart.getCartItems().size() <= 0)
+		{
+			return "redirect:/checkout";
+		}
+    	
+    	//Cart cart = (Cart) session.getAttribute("cart");
+    	//if(cart == null || cart.getIsEmpty()) {
+    	//	return "index";
+    	//}
     	
         model.addAttribute("order", new Order());
         model.addAttribute("countries", addressService.getAllCountries());
@@ -60,26 +79,26 @@ public class OrderController {
     }
     
     @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public String orderPost(@Valid Order order, BindingResult result, Model model, HttpSession session) {
+    public String orderPost(@Valid Order order, BindingResult result, Model model, HttpSession session, HttpServletRequest request) {
     	
         if (result.hasErrors()) {
         	log.error("Order validation failed");
-            return "order";
+            return "checkout";
         }
     	
-    	Cart cart = (Cart) session.getAttribute("cart");
-    	if(cart == null || cart.getIsEmpty()) {
-    		return "index";
-    	}
-    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-    	org.springframework.security.core.userdetails.User spuser = (org.springframework.security.core.userdetails.User) auth.getPrincipal();
-    	User user = userService.findByUsername(spuser.getUsername());
-    	Customer customer = user.getCustomer();
-    	
+        String name = request.getUserPrincipal() != null ? request.getUserPrincipal().getName() : "";
+		Customer customer = customerService.getByEmail(name.toString());
+		Cart cart = customer.getCart();
+		if(cart.getCartItems().size() <= 0)
+		{
+			return "redirect:/checkout";
+		}
+	
     	
     	order.setCustomer(customer);
     	order.setTotal(cart.getGrandTotal());
-    	
+    	Set<OrderItem> orderItems = new HashSet<OrderItem>();
+    	order.setOrderItems(orderItems);
     	for(CartItem ci : cart.getCartItems()) {
     		OrderItem oi = new OrderItem();
     		
@@ -92,10 +111,9 @@ public class OrderController {
     	
     	
     	orderService.save(order);
-    	session.setAttribute("cart", null);		//Clear Cart
-    	
-    	
-    	//model.addAttribute("orders", orderService.getAll());
+
+
+    	cartItemService.removeAllCartItems(cart);
     	
         return "redirect:/orderList";
     }

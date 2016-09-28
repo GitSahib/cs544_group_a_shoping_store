@@ -43,7 +43,7 @@
           Make a payment with Braintree using PayPal or a card
         </p>
       </header>
-	  <form:form method="POST" action="/gateway/checkouts" modelAttribute="checkoutForm" class="form-signin">
+	  <form:form method="POST" action="/gateway/checkoutorder/${order.id}" modelAttribute="checkoutForm" class="form-signin">
        <section>
           <div class="bt-drop-in-wrapper">
             <div id="bt-dropin"></div>

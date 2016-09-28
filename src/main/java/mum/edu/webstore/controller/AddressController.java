@@ -37,6 +37,20 @@ public class AddressController {
 		return result;
 	}
 	
+	@RequestMapping(value="/address/allstates")
+	@ResponseBody
+	public List<SimpleState> getAllState() {
+		List<State> states = addressService.getAllStates();
+		List<SimpleState> result = new ArrayList<SimpleState>();
+		for(State state : states) {
+			SimpleState s = new SimpleState();
+			s.setCode(state.getCode());
+			s.setName(state.getName());
+			result.add(s);
+		}
+		return result;
+	}
+	
 	@RequestMapping(value="/address/states/{country_id}")
 	@ResponseBody
 	public List<SimpleState> getStates(@PathVariable long country_id) {
@@ -44,7 +58,7 @@ public class AddressController {
 		List<SimpleState> result = new ArrayList<SimpleState>();
 		for(State state : states) {
 			SimpleState s = new SimpleState();
-			s.setId(state.getId());
+			s.setCode(state.getCode());
 			s.setName(state.getName());
 			result.add(s);
 		}
